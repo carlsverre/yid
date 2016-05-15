@@ -6,8 +6,12 @@ Made for the [San Francisco Stupid Shit No One Needs And Terrible Ideas "Hackath
 Run and then yell into your microphone and hope for the best.  Volume controls
 the mouse x coordinate, pitch controls the y coordinate.
 
+    $ python yid.py
+    Controlling cursor for 100 seconds, Ctrl-C to stop
+    ^CStopping...
+
 Dependencies
-============
+------------
 
 Only tested on a Mac.
 
