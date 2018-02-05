@@ -40,6 +40,10 @@ def process_chunk(chunk, out_chunk, time_info, status):
 
     max_db = np.max(np.abs(left_signal))
     max_db = DB_MUL * np.log10(max_db)
+
+    if max_db > 5:
+        mouse.click()
+
     x_pct = np.interp(max_db, [SCREEN_LEFT_DB, SCREEN_RIGHT_DB], [0, 0.999999])
 
     hz = determine_pitch(left_signal)
@@ -67,8 +71,9 @@ def stream_audio():
     s = Stream(samplerate=RATE, blocksize=CHUNK, callback=process_chunk)
     s.start()
     try:
-        print("Controlling cursor for 100 seconds, Ctrl-C to stop")
-        time.sleep(100)
+        secs = 1000
+        print("Controlling cursor for %d seconds, Ctrl-C to stop" % secs)
+        time.sleep(secs)
     except KeyboardInterrupt:
         pass
     print("Stopping...")
